@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons -->
+    <link href="images/favicon.png" rel="icon">
+    <title>艾思教育報名系統</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Itim&family=Noto+Sans+TC:wght@100..900&display=swap');
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+    </style>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .wrapper{
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .bg img:nth-child(1){
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            animation: bg-motion1 30s infinite linear;
+        }
+        .bg img:nth-child(2){
+            position: absolute;
+            top: 1550px;
+            left: 0;
+            z-index: -1;
+            animation: bg-motion2 30s infinite linear;
+        }
+        @keyframes bg-motion1{
+            0%{
+                top: 0;
+                opacity: 0.03;
+            }
+            48%{
+                opacity: 0.03;
+            }
+            50%{
+                opacity: 0.2;
+            }
+            52%{
+                opacity: 0.03;
+            }
+            100%{
+                top: -1500px;
+                opacity: 0.03;
+            }
+        }
+        @keyframes bg-motion2{
+            0%{
+                top: 1550px;
+                opacity: 0.03;
+            }
+            48%{
+                opacity: 0.03;
+            }
+            50%{
+                opacity: 0.2;
+            }
+            52%{
+                opacity: 0.03;
+            }
+            100%{
+                top: 0px;
+                opacity: 0.03;
+            }
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 500px;
+        }
+        header h1{
+            color: #3c3c3c;
+        }
+        main{
+            width: 100%;
+            height: 550px;
+            background-image: url(images/course-bg.png);
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        main section{
+            max-width: 1300px;
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        main section h2{
+            color: #3c3c3c;
+            width: 100%;
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+        main section .item{
+            max-width: 280px;
+            width: 50%;
+            position: relative;
+            margin: 10px;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        main section .item:hover{
+            transform: translateY(-10px);
+            transition: 0.4s;
+        }
+        main section .item img{
+            border-radius: 10px;
+            width: 100%;
+            padding: 3px 0;
+            transition: 0.4s;
+            -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.3)));
+            -moz-box-reflect: below 0px -moz-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.3)));
+        }
+        main section .item:hover img{
+            -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.3)));
+            -moz-box-reflect: below 0px -moz-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.3)));
+            transition: 0.4s;
+        }
+        main section .item .wordbox{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            text-align: center;
+            background-color: rgba(20, 20, 20 , 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        main section .item:hover .wordbox{
+            visibility: visible;
+            opacity: 1;
+            transition: 0.4s;
+        }
+        main section .item .wordbox p{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .version{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #999;
+        }
+
+        @media(max-width: 860px){
+            header{
+                height: unset;
+                padding: 50px 0;
+            }
+            header h1{
+                font-size: 36px;
+            }
+            main{
+                height: 900px;
+            }
+            main section h2{
+                font-size: 28px;
+                padding: 15px 0 10px;
+            }
+        }
+        @media(max-width: 450px){
+            header{
+                width: 90%;
+                margin: auto;
+            }
+            header img{
+                width: 100%;
+            }
+            header h1{
+                font-size: 26px;
+            }
+            main section .item{
+                width: 90%;
+            }
+            main{
+                background-image: unset;
+                height: auto;
+            }
+            main section h2{
+                font-size: 20px;
+            }
+            .version{
+                font-size: 13px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <img src="images/logo.png" alt="艾思教育 | 數理 ‧ 程式">
+            <h1>艾思教育 - 課程報名系統</h1>
+        </header>
+        <main>
+            <section>
+                <h2>選擇一個您要報名的課程</h2>
+                <a class="item" href="camp/camp.html">
+                    <img src="https://beyond-coding.org.tw/images/2026/03/11/2026-summer-camp-web-down.png" alt="程式營隊">
+                    <div class="wordbox"><p>報名程式營隊課程<br>請由此進入</p></div>
+                </a>
+                <a class="item" href="theme/theme.html">
+                    <img src="https://www.beyond-coding.org.tw/images/2026/01/09/2026-1-theme-course-web-down.png" alt="程式常態班">
+                    <div class="wordbox"><p>報名程式常態課程<br>請由此進入</p></div>
+                </a>
+                <a class="item" href="math/math.html">
+                    <img src="https://www.beyond-coding.org.tw/images/2022/06/20/mpm-math-index-down.jpg" alt="MPM數學班">
+                    <div class="wordbox"><p>報名MPM數學常態課程<br>請由此進入</p></div>
+                </a>
+                <!-- <a class="item" href="instant/instant.html">
+                    <img src="https://www.beyond-coding.org.tw/images/2023/10/12/2023-instant-learning-web-down.png" alt="程式時時學">
+                    <div class="wordbox"><p>報名程式時時學課程<br>請由此進入</p></div>
+                </a> -->
+            </section>
+        </main>
+        <div class="bg">
+            <img src="images/bg.png" alt="bg">
+            <img src="images/bg.png" alt="bg">
+        </div>
+    </div>
+    <p class="version">Version <span class="verNum"></span></p>
+
+    <!--version log-->
+    <script src="js/version.js"></script>
+</body>
+</html>

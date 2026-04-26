@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons -->
+    <link href="../images/favicon.png" rel="icon">
+    <title>程式常態班報名</title>
+
+    <link rel="stylesheet" href="https://www.beyond-coding.org.tw/children-camp/css/var.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Itim&family=Noto+Sans+TC:wght@100..900&display=swap');
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+    </style>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .wrapper{
+            width: 100%;
+            overflow: hidden;
+        }
+        .prev{
+            position: absolute;
+            top: 30px;
+            left: 500px;
+        }
+        .prev a{
+            color: #0051ff;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        .prev a svg{
+            margin: auto;
+            padding: 0 10px; 
+            transition: 0.4s;
+            width: 20px;
+            height: 20px;
+        }
+        .prev a:hover svg{
+            transform: translateX(-10px);
+            transition: 0.4s;
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            padding: 100px 0 120px;
+            background-image: url(images/theme-bg.png);
+            background-position: bottom center;
+            background-size: 1920px 500px;
+            background-repeat: no-repeat;
+        }
+        header picture{
+            max-width: 1100px;
+            width: 90%;
+            margin: auto;
+        }
+        header picture img{
+            width: 100%;
+            border-radius: 10px;
+            padding: 3px 0;
+            -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.3)));
+            -moz-box-reflect: below 0px -moz-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.3)));
+        }
+        main{
+            width: 100%;
+        }
+        main section{
+            max-width: 900px;
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        main section h2{
+            color: #3c3c3c;
+            width: 100%;
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+        main section h2 br{
+            display: none;
+        }
+        main section > a{
+            margin: 10px;
+            font-size: 20px;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.4s;
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 70px;
+        }
+        main section > a:nth-of-type(1){
+            background-color: #001d7c;
+        }
+        main section > a:nth-of-type(2){
+            background-color: #ff970e;
+        }
+        main section > a:nth-of-type(1):hover{
+            background-color: #0051ff;
+            transform: scale(1.05);
+            transition: 0.4s;
+        }
+        main section > a:nth-of-type(2):hover{
+            background-color: #FFBF0E;
+            transform: scale(1.05);
+            transition: 0.4s;
+        }
+        .old-student-group{
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .old-student-group p{
+            width: 100%;
+            text-align: center;
+            color: #666;
+            margin: 0;
+        }
+        .old-student-group a{
+            font-size: 16px;
+            padding: 12px 22px;
+            border-radius: 40px;
+            background-color: #5daf00;
+        }
+        .old-student-group a:hover{
+            background-color: #84f107;
+            transform: scale(1.05);
+        }
+        .version{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #999;
+        }
+
+        /*notebook*/
+        @media(max-width: 1550px){
+            .prev{
+                position: absolute;
+                top: 40px;
+                left: 250px;
+            }
+        }
+
+        /*pad*/
+        @media(max-width: 860px){
+            .prev{
+                position: absolute;
+                top: 40px;
+                left: 100px;
+            }
+            main section h2{
+                font-size: 28px;
+                padding: 15px 0 10px;
+            }
+        }
+
+        /*phone*/
+        @media(max-width: 450px){
+            .prev{
+                position: absolute;
+                top: 40px;
+                left: 20px;
+            }
+            header{
+                margin: 20px auto;
+            }
+            main{
+                background-image: unset;
+                height: auto;
+            }
+            main section h2{
+                font-size: 20px;
+            }
+            main section h2 br{
+                display: initial;
+            }
+            main section > a{
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+            .version{
+                font-size: 13px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div class="prev"><a href="../index.html"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+          </svg>返回上一頁</a></div>
+
+        <header>
+            <picture>
+                <source media="(max-width: 450px)" srcset="https://www.beyond-coding.org.tw/images/2026/01/09/2026-1-theme-course-web-center-p.png">
+                <source media="(min-width: 451px)" srcset="https://www.beyond-coding.org.tw/images/2026/01/09/2026-1-theme-course-web-center.png">
+                <img src="https://www.beyond-coding.org.tw/images/2026/01/09/2026-1-theme-course-web-center.png" alt="常態課程">
+            </picture>
+        </header>
+        <main>
+            <section>
+                <h2>請選擇報名方式</h2>
+                <a href="normal/theme-form.html">單報常態課程<br>請由此進入</a>
+                <a href="member/theme-form.html">套票舊生劃位登記<br>請由此進入</a>
+                <div class="old-student-group">
+                    <p>若為舊生，可先快速帶入資料再進入表單：</p>
+                    <a href="../camp/normal/old-student-login.html?target=theme-normal">舊生快速帶入（單報）</a>
+                    <a href="../camp/normal/old-student-login.html?target=theme-member">舊生快速帶入（套票）</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    <p class="version">Beta <span class="verNum"></span></p>
+
+    <!--version log-->
+    <script src="../js/version.js"></script>
+</body>
+</html>

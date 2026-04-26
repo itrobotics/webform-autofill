@@ -1,0 +1,671 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+body{
+    background: linear-gradient(90deg, #b5ccff , #b5ccff)
+}
+.wrapper{
+    max-width: 1200px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px #97b8ff, 0 0 20px #97b8ff;
+}
+.prev{
+    position: absolute;
+    top: 125px;
+    left: 500px;
+}
+.prev a{
+    color: #0051ff;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+}
+.prev a svg{
+    padding: 0 10px 3px;
+    transition: 0.4s;
+    width: 40px;
+    height: 40px;
+}
+.prev a:hover svg{
+    transform: translateX(-10px);
+    transition: 0.4s;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 50px;
+    border-bottom: 2px solid #0051ff;
+    width: 80%;
+    margin: auto;
+}
+.header img{
+    width: 350px;
+}
+.header h1{
+    color: #0051ff;
+    font-size: 30px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    font-weight: 700;
+    padding: 20px 0 0 0 ;
+}
+.class_name{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 30px 0;
+}
+.class_name br{
+    display: none;
+}
+
+.p_inline {
+    display: inline;
+}
+
+form{
+    padding: 10px 15px;
+}
+.title{
+    text-align: center;
+}
+.title h3{
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: #3c3c3c;
+    line-height: 36px;
+    display: inline-block;
+    padding: 10px 100px;
+    border-bottom: 2px solid #3c3c3c;
+    cursor: pointer;
+}
+.title h3 span{
+    color: 	#ff256e;
+    font-size: 16px;
+    font-weight: 400;
+}
+.title br{
+    display: none;
+}
+/*timer*/
+.timer{
+    background-image: url(https://www.beyond-coding.org.tw/children-camp/images/timer-bg-phone.png);
+    background-size: 100%;
+    width: 450px;
+    height: 90px;
+    padding: 10px 5px;
+}
+.timer h2{
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: left;
+    line-height: 30px;
+    color: #fff;
+    padding: 0 0 0 30px;
+}
+.timer .countdown{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    margin: -5px 0 0 30px;
+}
+.timer .countdown p{
+    color: #ffe70e;
+    font-weight: 600;
+    font-size: 20px;
+}
+.timer .countdown .date{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.timer .countdown .date span{
+    color: #ffe70e;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 5px;
+}
+.timer .countdown .date p{
+    margin: 0 5px;
+}
+.timer .timeover{
+    color: #ffe70e;
+    font-weight: 600;
+    font-size: 0.65em;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+/*layout*/
+.layout-1, .layout-2, .layout-3{
+    width: 90%;
+    margin: auto;
+    padding: 30px 20px;
+}
+.layout-1 .content, .layout-2 .content{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 0 0 0;
+}
+/*course-information*/
+.layout-3 .content{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 15px 0 0 0;
+}
+.item .courseIntro{
+    width: 800px;
+    margin: auto;
+    display: none;
+}
+.item .courseIntro p{
+    font-size: 22px;
+    font-weight: 500;
+    margin: 50px auto 10px;
+}
+.item .courseIntro img{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 7px #e4e4e4 , 0 0 14px #e4e4e4;
+}
+.layout-3 .content .chooseCourse{
+    width: 90%;
+    margin: auto;
+    display: none;
+}
+.layout-3 .content .chooseCourse .item{
+    position: relative;
+    padding: 50px 0;
+    margin: 15px auto;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.layout-3 .content .chooseCourse .item .inline{
+    margin: 10px auto;
+}
+.layout-3 .content .chooseCourse .item:nth-child(odd){
+    background: #f1fff3;
+}
+.layout-3 .content .chooseCourse .item:nth-child(even){
+    background: #f1f9ff;
+}
+.layout-3 .content .chooseCourse .item button{
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #0051ff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 2px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+.layout-3 .content .item.normal{
+    width: 90%;
+    text-align: left;
+    margin: 20px auto;
+}
+.material-box{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.material-box .item{
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+img.material-img{
+    margin: 30px auto 30px 70px;
+}
+img.material-img:nth-of-type(1){
+    width: 150px;
+}
+img.material-img:nth-of-type(2){
+    width: 100px;
+}
+img.material-img:nth-of-type(3){
+    width: 250px;
+}
+/*通用設定*/
+.inline{
+    display: flex;
+    justify-content: flex-start;
+}
+.item{
+    margin: 5px 20px;
+}
+.item.otherSelect{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.item.otherSelect2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.item.otherSelect3{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.item .ok{
+    position: relative;
+    padding: 0 10px;
+}
+.item .ok i:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    color: 	#ff256e;
+    font-size: 15px;
+    transition: 1s;
+}
+.item .ok i:nth-child(2){
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    transform: rotate(-180deg);
+    color: 	#00AA00;
+    font-size: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+}
+.item p{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 20px auto 10px;
+}
+.item input:valid{
+    border: 2px solid #00AA00;
+    border-radius: 5px;
+    transition: 0.7s;
+}
+.item label{
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #3c3c3c;
+    margin: auto 5px;
+}
+.item label span.system-remark{
+    font-size: 0.8em;
+    font-weight: 400;
+}
+.item input{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #3c3c3c;
+    padding: 5px 15px;
+    margin: 10px;
+    font-size: 18px;
+}
+.item select{
+    width: 100px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+.item select:valid{
+    border: 2px solid #00AA00;
+    border-radius: 5px;
+    transition: 1s;
+}
+.item span{
+    color: #ff256e;
+    font-weight: 700;
+}
+.item .imgbox{
+    width: 100%;
+    margin: 15px auto;
+}
+.item .imgbox img{
+    width: 70%;
+    border-radius: 10px;
+    margin: auto;
+}
+.sent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 0;
+}
+.sent #checkBtn{
+    color: #fff;
+    width: 300px;
+    margin: 0 auto 10px;
+    background-color: #0051ff;
+    padding: 7px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    border: 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.sent #checkBtn:hover{
+    background-color: 	#8bb0ff;
+    transition: 0.5s;
+}
+.sent p{
+    color: #ff256e;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+}
+.layout_title{
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #3c3c3c;
+}
+.layout_title::before{
+    content: "----------";
+}
+.layout_title::after{
+    content: "----------";
+}
+.information{
+    display: flex;
+}
+.information h5{
+    font-weight: 500;
+    color: #3c3c3c;
+    font-size: 18px;
+    margin: 0 10px;
+    width: 25%;
+}
+.information p{
+    font-size: 18px;
+    color: #143a8f;
+    transform: translateY(-2px);
+    width: 75%;
+}
+/* .grecaptcha-badge{ 
+    visibility: hidden;
+} */
+
+/*校區選擇按鈕客製化*/
+#songshan + label , #daan + label , #dazhi + label{
+    padding: 7px 25px 10px;
+    border-radius: 50px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0.4;
+    margin: 30px auto;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+#songshan:checked + label , #daan:checked + label , #dazhi:checked + label{
+    opacity: 1;
+    transition: 0.4s;
+}
+#songshan + label:hover , #daan + label:hover , #dazhi + label:hover{
+    opacity: 1;
+    transition: 0.4s;
+}
+#songshan + label{
+    background: #008141;
+}
+#daan + label{
+    background: #ff3c66;
+}
+#dazhi + label{
+    background: #c06021;
+}
+.version{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+/*notebook*/
+@media(max-width: 1550px){
+    .prev{
+        position: absolute;
+        top: 125px;
+        left: 300px;
+    }
+}
+
+/*pad*/
+@media(max-width:860px){
+    .prev{
+        position: absolute;
+        top: 115px;
+        left: 100px;
+    }
+    .wrapper{
+        width: 100%;
+        overflow: hidden;
+    }
+    .header{
+        width: 90%;
+        padding: 10px 0;
+    }
+    .header img{
+        width: 40%;
+    }
+    .header h2{
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .class_name{
+        font-size: 20px;
+    }
+    form{
+        padding: 10px 15px;
+    }
+    .title h3{
+        font-size: 22px;
+    }
+    .layout-1, .layout-2, .layout-3{
+        padding: 20px 30px;
+    }
+    .layout-1 br{
+        display: initial;
+    }
+    .layout-1 .content{
+        padding: 0px;
+    }
+    .content{
+        justify-content: left;
+    }
+    .item{
+        margin: 0px;
+    }
+}
+
+/*phone*/
+@media(max-width:450px){
+    .prev{
+        position: absolute;
+        top: 110px;
+        left: 20px;
+    }
+    .header{
+        justify-content: flex-end;
+    }
+    .header img{
+        width: 100%;
+    }
+    .header h1{
+        font-size: 26px;
+    }
+    .class_name br{
+        display: initial;
+    }
+    .class_name p.remark{
+        width: 90%;
+        font-size: 18px;
+    }
+
+    /*timer*/
+    .salestime p span{
+        color: var(--titleH2);
+        font-size: 1.1em;
+    }
+    .timer{
+        width: 100%;
+        height: 70px;
+        padding: 10px 5px;
+    }
+    .timer .countdown p{
+        font-size: 18px;
+    }
+    .timer .countdown .date span{
+        font-size: 20px;
+        margin: 0 5px;
+    }
+    
+    .title h3{
+        padding: 10px 30px;
+    }
+    .title br{
+        display: initial;
+    }
+    .layout-1, .layout-2, .layout-3{
+        padding: 30px 0;
+    }
+    .layout-3 .content .item.normal{
+        width: 100%;
+    }
+
+    /*course-information*/
+    .item .courseIntro{
+        width: 100%;
+        margin: auto;
+        display: none;
+    }
+    .item .courseIntro p{
+        font-size: 20px;
+        margin: 30px auto 10px;
+    }
+    .layout-3 .content .chooseCourse{
+        width: 100%;
+    }
+    .layout-3 .content .chooseCourse .item{
+        padding: 30px 0;
+        margin: 15px auto;
+        justify-content: flex-start;
+    }
+    .material-box{
+        width: 100%;
+    }
+    .material-box .item{
+        width: 100%;
+        margin: 10px 0;
+    }
+    img.material-img:nth-of-type(1){
+        width: 150px;
+    }
+    img.material-img:nth-of-type(2){
+        width: 100px;
+    }
+    img.material-img:nth-of-type(3){
+        width: 250px;
+    }
+
+    /*基本設定*/
+    .item label{
+        padding: 2px;
+        font-size: 16px;
+        margin: 10px auto;
+    }
+    .item input{
+        width: auto;
+        font-size: 16px;
+        padding: 3px 0;
+        margin: 10px;
+    }
+    .item select{
+        font-size: 16px;
+        margin: 5px;
+        padding: 0;
+    }
+    .item table{
+        width: 100%;
+        margin: auto;
+    }
+    .item table td{
+        padding: 5px;
+        font-size: 14px;
+    }
+    .item p{
+        font-size: 18px;
+        font-weight: 400;
+        margin: 10px auto;
+    }
+    .item .imgbox img{
+        width: 100%;
+    }
+    .sent #checkBtn{
+        width: 200px;
+        padding: 7px 0;
+    }
+
+    .layout_title{
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+    .layout_title::before{
+        content: "-----";
+    }
+    .layout_title::after{
+        content: "-----";
+    }
+    .information h5{
+        font-size: 14px;
+        width: 30%;
+    }
+    .information p{
+        font-size: 14px;
+        width: 70%;
+    }
+    /*校區選擇按鈕客製化*/
+    #songshan + label , #daan + label , #dazhi + label , #banqiao + label , #chongqing + label{
+        margin: 10px auto;
+    }
+
+    .version{
+        font-size: 13px;
+    }
+}

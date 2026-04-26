@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026春季班-報名表</title>
+    <!-- Favicons -->
+    <link href="../../images/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/sweetalert2.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://www.beyond-coding.org.tw/children-camp/css/var.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Itim&family=Noto+Sans+TC:wght@100..900&display=swap');
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="prev"><a href="../theme.html"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+          </svg>返回上一頁</a></div>
+
+        <div class="header">
+            <img src="../../images/it-logo.png" alt="">
+            <h1>課程報名表</h1>
+        </div>
+        <div class="class_name">
+            <p class="p_inline">課程：</p><p class="p_inline"name="courseYear">2026</p> <p class="p_inline" name="courseName">程式春季班</p>
+        </div>
+
+        <!-- Main Form-->
+        <form name="mainForm" method="post">
+            <!--表單類型-->
+            <input type="hidden" name="formType" value="theme-normal">
+            <!--表單名稱-->
+            <input type="hidden" name="formName" value="常態班-單報">
+            <!--表單版本-->
+            <input type="hidden" name="formVersion" value="2025-01">
+            <!--第一段落-->
+            <div class="title"><h3 class="open01">1.孩子基本資料</h3></div>
+            <div class="layout-1">
+
+                <div class="content">
+                    <div class="item">
+                        <label for="name"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>孩子姓名：</label><input style="width: 170px;" type="text" name="kidsName" id="name" required placeholder="請填寫姓名">
+                        
+                    </div>
+
+                    <div class="item">
+                        <label for="gender"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>性別：</label><input type="radio" name="gender" id="male" value="男" required><label for="male">1.男(M)</label>
+                        <input type="radio" name="gender" id="female" value="女"><label for="female">2.女(F)</label>
+                    </div>
+
+                    <div class="item">
+                        <label for="birthday"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>生日：</label>
+                        <select style="width: 150px;" name="year" required>
+                            <option value="">-出生年-</option>
+                            <option value="1998">1998年</option><option value="1999">1999年</option><option value="2000">2000年</option>
+                            <option value="2001">2001年</option><option value="2002">2002年</option><option value="2003">2003年</option>
+                            <option value="2004">2004年</option><option value="2005">2005年</option><option value="2006">2006年</option>
+                            <option value="2007">2007年</option><option value="2008">2008年</option><option value="2009">2009年</option>
+                            <option value="2010">2010年</option><option value="2011">2011年</option><option value="2012">2012年</option>
+                            <option value="2013">2013年</option><option value="2014">2014年</option><option value="2015">2015年</option>
+                            <option value="2016">2016年</option><option value="2017">2017年</option><option value="2018">2018年</option>
+                            <option value="2019">2019年</option><option value="2020">2020年</option><option value="2021">2021年</option>
+                            <option value="2022">2022年</option><option value="2023">2023年</option><option value="2024">2024年</option>
+                            <option value="2025">2025年</option><option value="2026">2026年</option><option value="2027">2027年</option>
+                            <option value="2028">2028年</option><option value="2029">2029年</option><option value="2030">2030年</option>
+                            <option value="2031">2031年</option><option value="2032">2032年</option><option value="2033">2033年</option>
+                            <option value="2034">2034年</option><option value="2035">2035年</option><option value="2036">2036年</option>
+                            <option value="2037">2037年</option><option value="2038">2038年</option><option value="2039">2039年</option>
+                            <option value="2040">2040年</option><option value="2041">2041年</option><option value="2042">2042年</option> 
+                        </select>
+                        <select style="width: 130px;" name="month" required>
+                            <option value="">-出生月-</option>
+                            <option value="1">1月</option><option value="2">2月</option><option value="3">3月</option>
+                            <option value="4">4月</option><option value="5">5月</option><option value="6">6月</option>
+                            <option value="7">7月</option><option value="8">8月</option><option value="9">9月</option>
+                            <option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
+                        </select>
+                        <select style="width: 130px;" name="day" required>
+                            <option value="">-出生日-</option>
+                            <option value="1">1日</option><option value="2">2日</option><option value="3">3日</option>
+                            <option value="4">4日</option><option value="5">5日</option><option value="6">6日</option>
+                            <option value="7">7日</option><option value="8">8日</option><option value="9">9日</option>
+                            <option value="10">10日</option><option value="11">11日</option><option value="12">12日</option>
+                            <option value="13">13日</option><option value="14">14日</option><option value="15">15日</option>
+                            <option value="16">16日</option><option value="17">17日</option><option value="18">18日</option>
+                            <option value="19">19日</option><option value="20">20日</option><option value="21">21日</option>
+                            <option value="22">22日</option><option value="23">23日</option><option value="24">24日</option>
+                            <option value="25">25日</option><option value="26">26日</option><option value="27">27日</option>
+                            <option value="28">28日</option><option value="29">29日</option><option value="30">30日</option>
+                            <option value="31">31日</option>
+                        </select>
+                    </div>
+
+                    <div class="item">
+                        <label for="school"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>就讀學校：</label><input style="width: 150px;" type="text" name="schoolName" id="school" required>
+                        <select style="width: 130px;" name="grade" required>
+                            <option value="">-就讀年級-</option>
+                            <option value="中班">中班</option><option value="大班">大班</option><option value="1">1年級</option>
+                            <option value="2">2年級</option><option value="3">3年級</option><option value="4">4年級</option>
+                            <option value="5">5年級</option><option value="6">6年級</option><option value="7">7年級</option>
+                            <option value="8">8年級</option><option value="9">9年級</option><option value="高一">高一</option>
+                        </select>
+                    </div>
+
+                    <div class="item">
+                        <label for="id_card"></span>身分證字號：</label><input style="width: 200px;" type="text" name="nationalNo" id="id_card" placeholder="非必填">
+                    </div>
+
+                </div>
+
+                <div class="content">
+                    <div class="item">
+                        <label for="phone"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>緊急聯絡人電話：</label><input style="width: 250px;" type="text" name="emergencyPhone" required placeholder="09********+(關係)">
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="item">
+                        <label for="connection-address"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>通訊地址：</label>
+                        <select name="commCity" id="commCity" required>
+                            <option value="">-縣市-</option>
+                            <option value="基隆市">基隆市</option>
+                            <option value="臺北市">臺北市</option>
+                            <option value="新北市">新北市</option>
+                            <option value="桃園市">桃園市</option>
+                            <option value="新竹市">新竹市</option>
+                            <option value="新竹縣">新竹縣</option>
+                            <option value="苗栗縣">苗栗縣</option>
+                            <option value="臺中市">臺中市</option>
+                            <option value="彰化縣">彰化縣</option>
+                            <option value="南投縣">南投縣</option>
+                            <option value="雲林縣">雲林縣</option>
+                            <option value="嘉義市">嘉義市</option>
+                            <option value="嘉義縣">嘉義縣</option>
+                            <option value="臺南市">臺南市</option>
+                            <option value="高雄市">高雄市</option>
+                            <option value="屏東縣">屏東縣</option>
+                            <option value="宜蘭縣">宜蘭縣</option>
+                            <option value="花蓮縣">花蓮縣</option>
+                            <option value="臺東縣">臺東縣</option>
+                            <option value="澎湖縣">澎湖縣</option>
+                            <option value="金門縣">金門縣</option>
+                            <option value="連江縣">連江縣</option>
+                        </select>
+                        <input style="width: 500px;" type="text" name="commAddr" id="connection-address" placeholder="請輸入完整通訊地址" required  min="5" max="20">
+                    </div>
+                </div>
+
+            </div>
+
+            <!--第二段落-->
+            <div class="title"><h3 class="open02">2.家長基本資料</h3></div>
+            <div class="layout-2">
+                <div class="content">
+                    <div class="content">
+                        <div class="item">
+                            <label for="name"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>家長姓名：</label><input style="width: 150px;" type="text" name="parentName" id="name" required placeholder="請填寫姓名">
+                        </div>
+
+                        <div class="item">
+                            <label for="phone"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>聯繫電話：</label><input style="width: 150px;" type="text" name="cellPhone" pattern="^\d{7,10}$" required placeholder="請填寫電話">
+                        </div>
+
+                        <div class="item">
+                            <label for=""><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>關係：</label><input style="width: 150px;" type="text" name="relation" required placeholder="與孩子關係">
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="item">
+                            <label for="e-mail"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>通訊電子郵件：</label><input style="width: 300px;" type="text" pattern=".*@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+.*" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="item otherSelect">
+                            <label for="mediaSource" style="width: 100%;">如何得知我們的消息</label><br><br>
+                            <div class="inline"><input type="checkbox" id="yahoo" name="mediaSource" value="Yahoo"><label for="yahoo">1.Yahoo搜尋</label></div>
+                            <div class="inline"><input type="checkbox" id="google" name="mediaSource" value="Google"><label for="google">2.Google搜尋</label></div>
+                            <div class="inline"><input type="checkbox" id="facebook" name="mediaSource" value="Facebook"><label for="facebook">3.Facebook</label></div>
+                            <div class="inline"><input type="checkbox" id="dm" name="mediaSource" value="紙張DM"><label for="dm">4.紙張DM</label></div>
+                            <div class="inline"><input type="checkbox" id="continue" name="mediaSource" value="舊生續報"><label for="continue">5.舊生續報</label></div>
+                            <div class="inline"><input type="checkbox" id="makerparty" name="mediaSource" value="親子天下MakerParty"><label for="makerparty">6.親子天下MakerParty</label></div><br>
+                            <div class="inline"><input type="checkbox" id="trycourse" name="mediaSource" value="校園體驗"><label for="trycourse">7.校園體驗</label></div>
+                            <div class="inline"><input type="checkbox" id="friend" name="mediaSource" value="親友介紹"><label for="friend">8.親友介紹</label></div>
+                            <div class="inline"><input type="checkbox" id="youtube" name="mediaSource" value="Youtube"><label for="youtube">9.Youtube</label></div>
+                            <div class="inline"><input type="checkbox" id="edm" name="mediaSource" value="EDM"><label for="edm">10.EDM</label></div>
+                            <div class="inline"><input type="checkbox" id="shop" name="mediaSource" value="經過教室"><label for="shop">11.經過教室</label></div>
+                            <div class="inline"><input type="checkbox" id="other" name="mediaSource" value="其他 : "><label for="other">12.其他</label><input style="width: 150px;" type="text" name="mediaSourceOther" placeholder="其他平台"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--第三段落-->
+            <div class="title"><h3 class="open03">3.報名資料</h3></div>
+            <div class="layout-3">
+                <div class="content">
+                    <div class="item otherSelect2">
+                        <label for="" style="width: 100%;"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>選擇上課校區：</label>
+                        <div class="inline"><input type="radio" name="itSchool" id="songshan" value="延壽校區" required><label for="songshan">延壽校區</label></div>
+                        <div class="inline"><input type="radio" name="itSchool" id="daan" value="安和校區"><label for="daan">安和校區</label></div>
+                        <div class="inline"><input type="radio" name="itSchool" id="dazhi" value="大直校區"><label for="dazhi">大直校區</label></div>
+
+                        <div class="courseIntro songshanCourse">
+                            <p>延壽校區 - 開課狀態表</p>
+                            <img src="https://www.beyond-coding.org.tw/theme-course/images/calendar-yanshou2.png" alt="延壽校開課表">
+                        </div>
+                        <div class="courseIntro daanCourse">
+                            <p>安和校區 - 開課狀態表</p>
+                            <img src="https://www.beyond-coding.org.tw/theme-course/images/calendar-anhe2.png" alt="安和校開課表">
+                        </div>
+                        <div class="courseIntro dazhiCourse">
+                            <p>大直校區 - 開課狀態表</p>
+                            <img src="https://www.beyond-coding.org.tw/theme-course/images/calendar-dazhi2.png" alt="大直校開課表">
+                        </div>
+                    </div>
+
+                    <div class="item" style="width: 100%; margin: 20px auto 0;">
+                        <label for=""></span>請勾選欲參加課程：</label>
+                    </div>
+
+                    <!--延壽選課表-->
+                    <div class="chooseCourse songshanCourse">
+                        <!--週六(第一期)-->
+                        <!-- <div class="item">
+                            <p>週六班(第一期3/7~5/2)</p>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-songshan-sat-minecraft" value="週六-Minecraft建築大師"><label for="1st-songshan-sat-minecraft">Minecraft建築大師</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-songshan-sat-scratch" value="週六-Scratch動畫設計師"><label for="1st-songshan-sat-scratch">Scratch動畫設計師</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-songshan-sat-microbit" value="週六-microbit感測狂想曲"><label for="1st-songshan-sat-microbit">microbit感測狂想曲</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-songshan-sat-scratchjr" value="週六-ScratchJr遊戲工廠"><label for="1st-songshan-sat-scratchjr">ScratchJr遊戲工廠</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-songshan-sat-c-plusplus" value="週六-C++核心實戰班"><label for="1st-songshan-sat-c-plusplus">C++核心實戰班</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-songshan-sat-jr-python" value="週六-Python基礎程式設計A"><label for="1st-songshan-sat-jr-python">Python基礎程式設計A</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div> -->
+
+                        <!--週日(第一期)-->
+                        <!-- <div class="item">
+                            <p>週日班(第一期3/8~5/3)</p>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-songshan-sun-scratch" value="週日-Scratch動畫設計師"><label for="1st-songshan-sun-scratch">Scratch動畫設計師</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-songshan-sunp-jr-python" value="週日-Python基礎程式設計A"><label for="1st-songshan-sunp-jr-python">Python基礎程式設計A</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-songshan-sunp-sr-python" value="週日-Python進階程式設計A"><label for="1st-songshan-sunp-sr-python">Python進階程式設計A</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-songshan-sun-microbit" value="週日-microbit感測狂想曲"><label for="1st-songshan-sun-microbit">microbit感測狂想曲</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-songshan-sun-microPython" value="週日-MicroPython你好!MicroPython"><label for="1st-songshan-sun-microPython">MicroPython你好!MicroPython</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-songshan-sun-minecraft" value="週日-Minecraft建築大師"><label for="1st-songshan-sun-minecraft">Minecraft建築大師</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div> -->
+
+                        <!--週六(第二期)-->
+                        <div class="item">
+                            <p>週六班(第二期5/9~6/27)</p>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-songshan-sat-minecraft" value="週六-Minecraft建築傳送術"><label for="2nd-songshan-sat-minecraft">Minecraft建築傳送術</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-songshan-sat-scratch" value="週六-Scratch格鬥競技場"><label for="2nd-songshan-sat-scratch">Scratch格鬥競技場</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-songshan-sat-microbit" value="週六-microbit程式探險家"><label for="2nd-songshan-sat-microbit">microbit程式探險家</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-songshan-sat-scratchjr" value="週六-ScratchJr狂歡派對"><label for="2nd-songshan-sat-scratchjr">ScratchJr狂歡派對</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-songshan-sat-c-plusplus" value="週六-C++核心實戰班"><label for="2nd-songshan-sat-c-plusplus">C++核心實戰班</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-songshan-sat-jr-python" value="週六-Python基礎程式設計B"><label for="2nd-songshan-sat-jr-python">Python基礎程式設計B</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div>
+
+                        <!--週日(第二期)-->
+                        <div class="item">
+                            <p>週日班(第二期5/10~6/28)</p>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-songshan-sun-scratch" value="週日-Scratch格鬥競技場"><label for="2nd-songshan-sun-scratch">Scratch格鬥競技場</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-songshan-sunp-jr-python" value="週日-Python基礎程式設計B"><label for="2nd-songshan-sunp-jr-python">Python基礎程式設計B</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-songshan-sunp-sr-python" value="週日-Python進階程式設計B"><label for="2nd-songshan-sunp-sr-python">Python進階程式設計B</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-songshan-sun-microbit" value="週日-microbit程式探險家"><label for="2nd-songshan-sun-microbit">microbit程式探險家</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-songshan-sun-microPython" value="週日-MicroPython你好!MicroPython"><label for="2nd-songshan-sun-microPython">MicroPython你好!MicroPython</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-songshan-sun-minecraft" value="週日-Minecraft建築傳送術"><label for="2nd-songshan-sun-minecraft">Minecraft建築傳送術</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div>
+                    </div>
+
+                    <!--安和選課表-->
+                    <div class="chooseCourse daanCourse">
+                        <!--週六(第一期)-->
+                        <div class="item">
+                            <p>週六班(第一期4/11~6/6)</p>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-daan-sat-scratch" value="週六-Scratch迷宮樂園"><label for="1st-daan-sat-scratch">Scratch迷宮樂園</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-daan-sat-minecraft" value="週六-Minecraft建築大師"><label for="1st-daan-sat-minecraft">Minecraft建築大師</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-daan-sat-scratchjr" value="週六-ScratchJr遊戲工廠"><label for="1st-daan-sat-scratchjr">ScratchJr遊戲工廠</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-daan-sat-sr-python" value="週六-Python進階程式A"><label for="1st-daan-sat-sr-python">Python進階程式A</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-daan-sat-microbit" value="週六-microbit感測狂想曲"><label for="1st-daan-sat-microbit">microbit感測狂想曲</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-daan-sat-c-plusplus" value="週六-C++核心實戰班"><label for="1st-daan-sat-c-plusplus">C++核心實戰班</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div>
+
+                        <!--週日(第一期)-->
+                        <div class="item">
+                            <p>週日班(第一期4/12~6/7)</p>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-daan-sun-minecraft1" value="週日-Minecraft建築大師"><label for="1st-daan-sun-minecraft1">Minecraft建築大師</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-daan-sun-scratch" value="週日-Scratch迷宮樂園"><label for="1st-daan-sun-scratch">Scratch迷宮樂園</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-daan-sun-jr-python" value="週日-Python基礎程式A"><label for="1st-daan-sun-jr-python">Python基礎程式A</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-daan-sun-minecraft2" value="週日-Minecraft方塊造夢者"><label for="1st-daan-sun-minecraft2">Minecraft方塊造夢者</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-daan-sun-scratchjr" value="週日-ScratchJr遊戲工廠"><label for="1st-daan-sun-scratchjr">ScratchJr遊戲工廠</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div>
+
+                        <!--週六(第二期)-->
+                        <!-- <div class="item">
+                            <p>週六班(第二期5/9~6/27)</p>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-daan-sat-scratch" value="週六-Scratch星際遠征隊"><label for="2nd-daan-sat-scratch">Scratch星際遠征隊</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-daan-sat-minecraft" value="週六-Minecraft建築傳送術"><label for="2nd-daan-sat-minecraft">Minecraft建築傳送術</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-daan-sat-scratchjr" value="週六-ScratchJr狂歡派對"><label for="2nd-daan-sat-scratchjr">ScratchJr狂歡派對</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-daan-sat-sr-python" value="週六-Python進階程式B"><label for="2nd-daan-sat-sr-python">Python進階程式B</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-daan-sat-microbit" value="週六-microbit感測狂想曲"><label for="2nd-daan-sat-microbit">microbit感測狂想曲</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-daan-sat-c-plusplus" value="週六-C++核心實戰班"><label for="2nd-daan-sat-c-plusplus">C++核心實戰班</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div> -->
+
+                        <!--週日(第二期)-->
+                        <!-- <div class="item">
+                            <p>週日班(第二期5/10~6/28)</p>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-daan-sun-minecraft1" value="週日-Minecraft建築傳送術"><label for="2nd-daan-sun-minecraft1">Minecraft建築傳送術</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-daan-sun-scratch" value="週日-Scratch星際遠征隊"><label for="2nd-daan-sun-scratch">Scratch星際遠征隊</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-daan-sun-jr-python" value="週日-Python基礎程式B"><label for="2nd-daan-sun-jr-python">Python基礎程式B</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-daan-sun-minecraft2" value="週日-Minecraft方塊魔法師"><label for="2nd-daan-sun-minecraft2">Minecraft方塊魔法師</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-daan-sun-scratchjr" value="週日-ScratchJr狂歡派對"><label for="2nd-daan-sun-scratchjr">ScratchJr狂歡派對</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div> -->
+                    </div>
+
+                    <!--大直選課表-->
+                    <div class="chooseCourse dazhiCourse">
+                        <!--週六(第一期)-->
+                        <!-- <div class="item">
+                            <p>週六班(第一期3/7~5/2)</p>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-dazhi-sat-scratchjr" value="週六-ScratchJr邏輯判斷解謎遊戲"><label for="1st-dazhi-sat-scratchjr">ScratchJr邏輯判斷解謎遊戲</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-dazhi-sat-minecraft" value="週六-Minecraft方塊魔法師"><label for="1st-dazhi-sat-minecraft">Minecraft方塊魔法師</label></div>
+                            <div class="inline"><input type="radio" name="weekend1" id="1st-dazhi-sat-microbit" value="週六-microbit創客小達人"><label for="1st-dazhi-sat-microbit">microbit創客小達人</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div> -->
+
+                        <!--週日(第一期)-->
+                        <!-- <div class="item">
+                            <p>週日班(第一期3/8~5/3)</p>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-dazhi-sun-scratch" value="週日-Scratch格鬥競技場"><label for="1st-dazhi-sun-scratch">Scratch格鬥競技場</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-dazhi-sun-minecraft" value="週日-Minecraft方塊魔法師"><label for="1st-dazhi-sun-minecraft">Minecraft方塊魔法師</label></div>
+                            <div class="inline"><input type="radio" name="weekend2" id="1st-dazhi-sun-jr-python" value="週日-Python基礎程式B"><label for="1st-dazhi-sun-jr-python">Python基礎程式B</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div> -->
+
+                        <!--週六(第二期)-->
+                        <div class="item">
+                            <p>週六班(第二期5/9~6/27)</p>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-dazhi-sat-scratchjr" value="週六-ScratchJr遊戲工廠"><label for="2nd-dazhi-sat-scratchjr">ScratchJr遊戲工廠</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-dazhi-sat-minecraft" value="週六-Minecraft未來之城"><label for="2nd-dazhi-sat-minecraft">Minecraft未來之城</label></div>
+                            <div class="inline"><input type="radio" name="weekend3" id="2nd-dazhi-sat-microbit" value="週六-microbit感測狂想曲"><label for="2nd-dazhi-sat-microbit">microbit感測狂想曲</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div>
+
+                        <!--週日(第二期)-->
+                        <div class="item">
+                            <p>週日班(第二期5/10~6/28)</p>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-dazhi-sun-scratch" value="週日-Scratch迷宮樂園"><label for="2nd-dazhi-sun-scratch">Scratch迷宮樂園</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-dazhi-sun-minecraft" value="週日-Minecraft未來之城"><label for="2nd-dazhi-sun-minecraft">Minecraft未來之城</label></div>
+                            <div class="inline"><input type="radio" name="weekend4" id="2nd-dazhi-sun-jr-python" value="週日-Python基礎程式B"><label for="2nd-dazhi-sun-jr-python">Python基礎程式B</label></div>
+                            <button class="clearRadio">清除按鈕</button>
+                        </div>
+                    </div>
+
+                    <!--麥塊帳號-->
+                    <div class="item normal otherSelect3">
+                        <label style="width: 100%;"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>麥塊帳號是否要升級成「獨立帳號」：</label><br>
+                        <div class="inline"><input type="radio" name="minecraftID" id="nomc" value="無" required><label for="nomc">無麥塊系列課程 / 已有帳號者</label></div>
+                        <div class="inline"><input type="radio" name="minecraftID" id="noupgrade" value="共享帳號"><label for="noupgrade">不升級，使用共享帳號250元</label></div>
+                        <div class="inline"><input type="radio" name="minecraftID" id="upgrade" value="獨立帳號"><label for="upgrade">升級，個人帳號800元</label></div>
+                    </div>
+
+                    <!--硬體教材-->
+                    <div class="item normal otherSelect3 materialGroup required">
+                        <label style="width: 100%;"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>購買硬體教材選擇(必填)：</label><br>
+                        <div class="inline"><input type="checkbox" name="material" id="nomcb" value="無"><label for="nomcb">無micro:bit系列課程</label></div>
+                        <div class="material-box">
+                            <div class="item">
+                                <img class="material-img" src="../member/images/microbit.png" alt="microbit">
+                                <div class="inline"><input type="checkbox" name="material" id="microbit" value="micro:bit 1,250元"><label for="microbit">micro:bit 1,250元<br><span class="system-remark">(有micro:bit者可重複使用，無須購買)</span></label></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--方案與梯次-->
+                    <div class="item normal otherSelect3">
+                        <label style="width: 100%;"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>報名方案：</label><br>
+                        <div class="inline"><input type="radio" name="sales" id="juniorcard" value="【探索方案】1年內任選3梯參加，總價29,900元(餐費、教材費另計)" required><label for="juniorcard">【探索方案】1年內任選3梯參加，總價29,900元(餐費、教材費另計)</label></div>
+                        <div class="inline"><input type="radio" name="sales" id="seniorcard" value="【進階方案】3年內任選5梯參加，總價44,500元(餐費、教材費另計)" required><label for="seniorcard">【進階方案】3年內任選5梯參加，總價44,500元(餐費、教材費另計)</label></div>
+                        <div class="inline"><input type="radio" name="sales" id="procard" value="【頂級方案】3年內任選8梯參加，總價71,200元(餐費、教材費另計)"><label for="procard">【頂級方案】3年內任選8梯參加，總價71,200元(餐費、教材費另計)</label></div>
+                        <div class="inline"><input type="radio" name="sales" id="oneTime" value="報名1梯次"><label for="oneTime">報名1梯主題班(8週)</label></div>
+                        <div class="inline"><input type="radio" name="sales" id="twoTime" value="報名2梯次"><label for="twoTime">報名2梯主題班(16週)</label></div>
+                    </div>
+
+                    <div class="item normal otherSelect">
+                        <label style="width: 100%;">是否加報「數學」班，再優惠500元</label>
+                        <div class="imgbox"><img src="https://www.beyond-coding.org.tw/children-camp/images/mpm-math-banner.png" alt=""></div>
+                        <input type="radio" name="extraMathCourse" id="yes" value="☐ 不加報MPM數學 ■ 加報MPM數學，優惠500元"><label for="yes">是</label>
+                        <input type="radio" name="extraMathCourse" value="■ 不加報MPM數學 ☐ 加報MPM數學，優惠500元" style="display: none;" checked><label style="display: none;">否</label>
+                    </div>
+
+                    <div class="item normal otherSelect">
+                        <label style="width: 100%;">是否使用團報方案</label>
+                        <input type="checkbox" name="together" id="sales2" value="使用團報"><label for="sales2">是，團報姓名:</label><input type="text" style="width: 150px;" name="togetherName" id="sales2">
+                    </div>
+
+                    <div class="item normal otherSelect">
+                        <label style="width: 100%;"><span class="ok"><i class="bi bi-asterisk"></i><i class="bi bi-check-circle-fill"></i></span>繳費方式</label>
+                        <div class="inline"><input type="radio" name="pay" id="cash" value="現金" required><label for="cash">現金</label></div>
+                        <div class="inline"><input type="radio" name="pay" id="creditcard-online" value="線上刷卡"><label for="creditcard-online">線上刷卡</label></div>
+                        <div class="inline"><input type="radio" name="pay" id="creditcard" value="教室刷卡"><label for="creditcard">教室刷卡</label></div>
+                        <div class="inline"><input type="radio" name="pay" id="atm" value="臨櫃/ATM轉帳匯款 代碼：008華南銀行 帳號：100100343788 戶名：艾思程式教育股份有限公司"><label for="atm">臨櫃/ATM轉帳匯款</label></div>
+                    </div>
+
+                    <!--填表時間 不顯示-->
+                    <div style="display: none;">
+                        <input type="text" name="doneFormYear">
+                        <input type="text" name="doneFormMonth">
+                        <input type="text" name="doneFormDate">
+                    </div>
+
+                </div>
+            </div>
+            <div class="sent">
+                <input type="button" id="checkBtn" class="btn btn-primary" value="送出資料">
+                <p>※請確認上方資訊已確實填寫</p>
+                <!-- <p style="font-size: 8px; color: #6C6C6C;">This site is protected by reCAPTCHA and the Google
+                    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                    <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p> -->
+            </div>
+
+
+            <!-- BS Modal -->
+            <div class="modal fade" id="Modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">請確認以下資訊是否正確</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!--layout1-->
+                    <p class="layout_title">孩子基本資料</p>
+
+                    <div class="information"><h5>孩子姓名 :</h5><p class="checkKidsName"></p></div>
+                    <div class="information"><h5>性別 :</h5><p class="checkGender"></p></div>
+                    <div class="information"><h5>生日 :</h5><p class="checkBirthday"></p></div>
+                    <div class="information"><h5>就讀學校 :</h5><p class="checkSchoolName"></p></div>
+                    <div class="information"><h5>就讀年級 :</h5><p class="checkGrade"></p></div>
+                    <div class="information"><h5>身分證字號 :</h5><p class="checkId"></p></div>
+                    <div class="information"><h5>緊急連絡人電話 :</h5><p class="checkEmergencyPhone"></p></div>
+                    <div class="information"><h5>通訊地址 :</h5><p class="checkCommAddr"></p></div>
+
+                    <!--layout2-->
+                    <p class="layout_title">家長基本資料</p>
+                    <div class="information"><h5>家長姓名：</h5><p class="checkParentName"></p></div>
+                    <div class="information"><h5>聯繫電話：</h5><p class="checkCellphone"></p></div>
+                    <div class="information"><h5>關係 :</h5><p class="checkRelation"></p></div>
+                    <div class="information"><h5>通訊電子郵件 :</h5><p><span class="checkEmail"></p></div>
+                    <div class="information"><h5>媒體消息來源 :</h5><p class="checkMediaSource"></p></div>
+
+                    <!--layout3-->
+                    <p class="layout_title">報名資料</p>
+                    <div class="information"><h5>上課校區 :</h5><p class="checkItSchool"></p></div>
+                    <div class="information"><h5>參加梯次 :</h5><p class="checkChooseCouse"></p></div>
+                    <div class="information"><h5>麥塊帳號選擇 :</h5><p class="checkMinecraftID"></p></div>
+                    <div class="information"><h5>硬體教材選擇 :</h5><p class="checkMaterial"></p></div>
+                    <div class="information"><h5>報名方案 :</h5><p class="checkSales"></p></div>
+                    <div class="information"><h5>加購MPM：</h5><p class="checkExtraMathCourse"></p></div>
+                    <div class="information"><h5>是否使用團報方案 :</h5><p class="checkTogether"></div>
+                    <div class="information"><h5>繳費方式 :</h5><p class="checkPay"></p></div>
+
+                    <!--layout4-->
+                    <p class="layout_title">填表時間</p>
+                    <div class="information"><h5>填表日期 :</h5><p class="checkDoneFormDate"></p></div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">有誤，需更改</button>
+                    <!-- 2-1.進行驗證，並產生token -->
+                    <button type="button" class="btn btn-primary g-recaptcha" 
+                            data-bs-dismiss="modal" data-sitekey="6LdZqTcpAAAAAIFj35Gr-wIuc0f1EyMucOjqnP8R" 
+                            data-callback='onSubmit' data-action='Submit/product'>確認無誤，並提交
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+
+    <p class="version">Beta <span class="verNum"></span></p>
+
+
+
+    <!--bootstrap-->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!--jQuery-->
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+
+    <!-- sweetalert2 -->
+    <script src="../../js/sweetalert2.all.min.js"></script>
+
+    <!--take form-->
+    <script src="../../js/app.js"></script>
+
+    <!-- Google ReCaptcha -->
+    <script defer src="https://www.google.com/recaptcha/api.js"></script>
+
+    <!--change school course img-->
+    <script src="../js/toggle.js"></script>
+
+    <!--version log-->
+    <script src="../../js/version.js"></script>
+
+    <!-- old-student prefill loader -->
+    <script src="../../js/prefill-loader.js"></script>
+</body>
+</html>
