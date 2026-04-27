@@ -1,10 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     const prefillDataStr = sessionStorage.getItem('camp_prefill');
-    if (!prefillDataStr) return;
+    const loginStudentId = (sessionStorage.getItem('camp_student_id') || '').trim();
+    if (!prefillDataStr && !loginStudentId) return;
 
     try {
-        const prefill = JSON.parse(prefillDataStr);
+        const prefill = prefillDataStr ? JSON.parse(prefillDataStr) : {};
         console.info('[camp-prefill-loader] prefill from sessionStorage:', prefill);
+
+        const ensureHiddenField = (name) => {
+            let el = document.querySelector(`input[name="${name}"]`);
+            if (el) return el;
+
+            const form = document.forms['mainForm'] || document.querySelector('form[name="mainForm"]') || document.querySelector('form');
+            if (!form) return null;
+
+            el = document.createElement('input');
+            el.type = 'hidden';
+            el.name = name;
+            form.appendChild(el);
+            return el;
+        };
+
+        const studentNoFromPrefill = String(
+            prefill.student_no || prefill.student_id || prefill.studentNo || '',
+        ).trim().toUpperCase();
+        const finalStudentNo = (studentNoFromPrefill || loginStudentId).trim().toUpperCase();
+        if (finalStudentNo) {
+            const studentNoInput = ensureHiddenField('studentNo');
+            if (studentNoInput) {
+                studentNoInput.value = finalStudentNo;
+                studentNoInput.dispatchEvent(new Event('input', { bubbles: true }));
+                studentNoInput.dispatchEvent(new Event('change', { bubbles: true }));
+                console.info('[camp-prefill-loader] studentNo applied from login/prefill:', finalStudentNo);
+            }
+        }
 
         // --- Mapping definition ---
         // sourceKeys: 支援新舊 payload 欄位名稱
@@ -194,7 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
         console.error('Error parsing prefill data:', e);
     } finally {
-        // Clear storage after applying
+        // Clear prefill snapshot after applying.
+        // Keep camp_student_id until actual submit success,
+        // so app.js can still fallback and inject studentNo at submit time.
         sessionStorage.removeItem('camp_prefill');
     }
 });

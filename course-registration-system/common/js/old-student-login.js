@@ -80,6 +80,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             console.info('[old-student-login] lookup matched prefill:', data.prefill);
             // Save prefill data to sessionStorage
             sessionStorage.setItem('camp_prefill', JSON.stringify(data.prefill));
+            // Save login student id so form submit can write studentNo back to Google Sheet
+            sessionStorage.setItem('camp_student_id', studentId);
             // Redirect to form
             window.location.href = getTargetFormUrl();
         } else {

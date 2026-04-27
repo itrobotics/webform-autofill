@@ -1,4 +1,13 @@
 ﻿//通用課程報名系統 JavaScript - 統一版本
+const GAS_WEB_APP_URL =
+  'https://script.google.com/macros/s/AKfycbzBf4UjIHIBswafVht5lHqq7TQpu0eFQk_qdikWR3F-HX3DAoNrmxcQai8dIQm10dQwPw/exec';
+
+const gasSubmitState = {
+  isSubmitting: false,
+  callbackTriggered: false,
+  fallbackTimer: null,
+};
+
 //清除按鈕用
 document.querySelectorAll('.chooseCourse .item').forEach((item) => {
   const radios = item.querySelectorAll('input[type="radio"]');
@@ -90,6 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初始化時更新 icon 狀態
     updateOkIcons(item);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const recaptchaButtons = document.querySelectorAll('.g-recaptcha');
+  recaptchaButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      scheduleRecaptchaFallbackSubmit();
+    });
   });
 });
 
@@ -425,6 +443,18 @@ function writeDataToModal() {
 // 2-2.接收 recaptcha Callback and Token
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function onSubmit(token) {
+  gasSubmitState.callbackTriggered = true;
+  if (gasSubmitState.fallbackTimer) {
+    clearTimeout(gasSubmitState.fallbackTimer);
+    gasSubmitState.fallbackTimer = null;
+  }
+
+  if (gasSubmitState.isSubmitting) {
+    console.warn('送出流程進行中，略過重複觸發。');
+    return;
+  }
+  gasSubmitState.isSubmitting = true;
+
   console.log(`Sent with token: ${token}!!`);
 
   // Use javascript get full formdata and transform to JSON
@@ -444,6 +474,47 @@ function onSubmit(token) {
         : value;
     }
   });
+
+  const getStudentNoFallback = () => {
+    const fromFormInput = String(
+      (mainForm.elements.studentNo && mainForm.elements.studentNo.value) ||
+        formDataObj.studentNo ||
+        '',
+    )
+      .trim()
+      .toUpperCase();
+    if (fromFormInput) return fromFormInput;
+
+    const fromSession = String(sessionStorage.getItem('camp_student_id') || '')
+      .trim()
+      .toUpperCase();
+    if (fromSession) return fromSession;
+
+    try {
+      const prefillRaw = sessionStorage.getItem('camp_prefill');
+      if (!prefillRaw) return '';
+      const prefill = JSON.parse(prefillRaw);
+      return String(
+        (prefill &&
+          (prefill.student_no || prefill.student_id || prefill.studentNo)) ||
+          '',
+      )
+        .trim()
+        .toUpperCase();
+    } catch (e) {
+      console.warn('camp_prefill 解析失敗，無法回填 studentNo：', e);
+      return '';
+    }
+  };
+
+  const resolvedStudentNo = getStudentNoFallback();
+  if (resolvedStudentNo) {
+    formDataObj.studentNo = resolvedStudentNo;
+    if (!formDataObj.student_id) {
+      formDataObj.student_id = resolvedStudentNo;
+    }
+  }
+  console.info('[submit] resolved studentNo:', resolvedStudentNo || '(empty)');
 
   // 定義通用schema
   var schema = {
@@ -563,37 +634,216 @@ function onSubmit(token) {
     title: '送出中，請稍後...',
     didOpen: () => {
       Swal.showLoading();
-      $.ajax({
-        headers: {
-          Recaptcha: token,
-        },
-        type: 'POST',
-        url: 'https://form.ittraining.com.tw:3005/product/submit',
-        data: formDataObj,
-        mimeType: 'application/json',
-        success: (response) => {
-          console.log(response);
+      // 暫時停用原本送單機制（保留程式碼供後續恢復）
+      // $.ajax({
+      //   headers: {
+      //     Recaptcha: token,
+      //   },
+      //   type: 'POST',
+      //   url: 'https://form.ittraining.com.tw:3005/product/submit',
+      //   data: formDataObj,
+      //   mimeType: 'application/json',
+      //   success: (response) => {
+      //     console.log(response);
+      //     postToGasForSheet(formDataObj);
+      //     window.location.href = 'https://www.beyond-coding.org.tw/course-registration-system/done-page.html';
+      //   },
+      //   error: (thrownError) => {
+      //     console.error(thrownError);
+      //     let responseObj = {};
+      //     try {
+      //       responseObj = thrownError.responseText
+      //         ? JSON.parse(thrownError.responseText)
+      //         : {};
+      //     } catch (e) {
+      //       console.error('Failed to parse error response:', e);
+      //     }
+      //     Swal.hideLoading();
+      //     Swal.showValidationMessage(
+      //       `發生異常😥: ${responseObj.statusCode || ''} ${
+      //         thrownError.statusText || ''
+      //       } - ${responseObj.message || '請稍後再試'}`,
+      //     );
+      //   },
+      // });
+
+      pingGasConnectivity()
+        .then((pingResult) => {
+          console.log('GAS ping 成功：', pingResult);
+          return postToGasForSheet(formDataObj);
+        })
+        .then((gasResult) => {
+          console.log('Google Sheet 寫入送出：', gasResult);
+          sessionStorage.removeItem('camp_student_id');
+          sessionStorage.removeItem('camp_prefill');
           window.location.href = 'https://www.beyond-coding.org.tw/course-registration-system/done-page.html';
-        },
-        error: (thrownError) => {
-          console.error(thrownError);
-          let responseObj = {};
-          try {
-            responseObj = thrownError.responseText
-              ? JSON.parse(thrownError.responseText)
-              : {};
-          } catch (e) {
-            console.error('Failed to parse error response:', e);
-          }
+        })
+        .catch((error) => {
+          console.error('Google Sheet 寫入失敗：', error);
+          gasSubmitState.isSubmitting = false;
           Swal.hideLoading();
           Swal.showValidationMessage(
-            `發生異常😥: ${responseObj.statusCode || ''} ${
-              thrownError.statusText || ''
-            } - ${responseObj.message || '請稍後再試'}`,
+            `寫入 Google Sheet 失敗：${error && error.message ? error.message : '請稍後再試'}`,
           );
-        },
-      });
+        });
     },
+  });
+}
+
+function scheduleRecaptchaFallbackSubmit() {
+  gasSubmitState.callbackTriggered = false;
+
+  if (gasSubmitState.fallbackTimer) {
+    clearTimeout(gasSubmitState.fallbackTimer);
+    gasSubmitState.fallbackTimer = null;
+  }
+
+  gasSubmitState.fallbackTimer = setTimeout(() => {
+    if (gasSubmitState.callbackTriggered || gasSubmitState.isSubmitting) return;
+    console.warn('reCAPTCHA callback 未觸發，啟用手動 fallback 送出。');
+    onSubmit('manual-fallback-no-recaptcha');
+  }, 1200);
+}
+
+function pingGasConnectivity() {
+  const callbackName = `gasPing_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
+  const params = {
+    action: 'ping',
+    source: 'course-registration-system',
+    callback: callbackName,
+  };
+  const query = new URLSearchParams(params).toString();
+  const src = `${GAS_WEB_APP_URL}?${query}`;
+
+  return new Promise((resolve, reject) => {
+    let timer = null;
+    const script = document.createElement('script');
+
+    function cleanup() {
+      if (timer) clearTimeout(timer);
+      if (script.parentNode) script.parentNode.removeChild(script);
+      delete window[callbackName];
+    }
+
+    window[callbackName] = (data) => {
+      cleanup();
+      if (!data || !data.success || data.action !== 'ping') {
+        reject(new Error('Ping 回應異常'));
+        return;
+      }
+      resolve(data);
+    };
+
+    script.onerror = () => {
+      cleanup();
+      reject(new Error('Ping 請求失敗，可能 URL 或部署設定不正確'));
+    };
+
+    timer = setTimeout(() => {
+      cleanup();
+      reject(new Error('Ping 逾時（10 秒）'));
+    }, 10000);
+
+    script.src = src;
+    document.body.appendChild(script);
+  });
+}
+
+function postToGasForSheet(formDataObj) {
+  if (!formDataObj || typeof formDataObj !== 'object') return;
+
+  const payload = {
+    action: 'write_form_submission',
+    source: 'course-registration-system',
+    submitted_at: new Date().toISOString(),
+    trace_id: `trace_${Date.now()}_${Math.floor(Math.random() * 10000)}`,
+    formDataPayload: JSON.stringify(formDataObj),
+  };
+
+  const body = new URLSearchParams(payload).toString();
+
+  return fetch(GAS_WEB_APP_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    },
+    body,
+    credentials: 'omit',
+    redirect: 'follow',
+  })
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const text = await response.text();
+      let data = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch (parseErr) {
+        throw new Error(`GAS 回傳非 JSON：${parseErr && parseErr.message ? parseErr.message : parseErr}`);
+      }
+
+      if (!data || !data.success) {
+        throw new Error(
+          `GAS 寫入失敗：${data && data.message ? data.message : '未知錯誤'}`,
+        );
+      }
+
+      return { ...data, mode: 'fetch_post' };
+    })
+    .catch((fetchError) => {
+      console.warn('fetch 送出失敗，改用 iframe fallback：', fetchError);
+      return postToGasForSheetViaIframe(payload);
+    });
+}
+
+function postToGasForSheetViaIframe(payload) {
+  return new Promise((resolve, reject) => {
+    const iframeName = `gasSheetSubmit_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
+    const iframe = document.createElement('iframe');
+    const form = document.createElement('form');
+    let done = false;
+
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+
+    form.method = 'POST';
+    form.action = GAS_WEB_APP_URL;
+    form.target = iframeName;
+    form.style.display = 'none';
+
+    Object.keys(payload).forEach((key) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = payload[key];
+      form.appendChild(input);
+    });
+
+    const cleanup = () => {
+      if (form.parentNode) form.parentNode.removeChild(form);
+      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+    };
+
+    const timer = setTimeout(() => {
+      if (done) return;
+      done = true;
+      cleanup();
+      reject(new Error('GAS 寫入逾時（iframe form post）'));
+    }, 15000);
+
+    iframe.onload = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      cleanup();
+      resolve({ success: true, mode: 'iframe_form_post', trace_id: payload.trace_id });
+    };
+
+    document.body.appendChild(iframe);
+    document.body.appendChild(form);
+    form.submit();
   });
 }
 
