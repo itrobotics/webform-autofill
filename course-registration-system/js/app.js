@@ -634,58 +634,53 @@ function onSubmit(token) {
     title: '送出中，請稍後...',
     didOpen: () => {
       Swal.showLoading();
-      // 暫時停用原本送單機制（保留程式碼供後續恢復）
-      // $.ajax({
-      //   headers: {
-      //     Recaptcha: token,
-      //   },
-      //   type: 'POST',
-      //   url: 'https://form.ittraining.com.tw:3005/product/submit',
-      //   data: formDataObj,
-      //   mimeType: 'application/json',
-      //   success: (response) => {
-      //     console.log(response);
-      //     postToGasForSheet(formDataObj);
-      //     window.location.href = 'https://www.beyond-coding.org.tw/course-registration-system/done-page.html';
-      //   },
-      //   error: (thrownError) => {
-      //     console.error(thrownError);
-      //     let responseObj = {};
-      //     try {
-      //       responseObj = thrownError.responseText
-      //         ? JSON.parse(thrownError.responseText)
-      //         : {};
-      //     } catch (e) {
-      //       console.error('Failed to parse error response:', e);
-      //     }
-      //     Swal.hideLoading();
-      //     Swal.showValidationMessage(
-      //       `發生異常😥: ${responseObj.statusCode || ''} ${
-      //         thrownError.statusText || ''
-      //       } - ${responseObj.message || '請稍後再試'}`,
-      //     );
-      //   },
-      // });
+      $.ajax({
+        headers: {
+          Recaptcha: token,
+        },
+        type: 'POST',
+        url: 'https://form.ittraining.com.tw:3005/product/submit',
+        data: formDataObj,
+        mimeType: 'application/json',
+        success: (response) => {
+          console.log(response);
 
-      pingGasConnectivity()
-        .then((pingResult) => {
-          console.log('GAS ping 成功：', pingResult);
-          return postToGasForSheet(formDataObj);
-        })
-        .then((gasResult) => {
-          console.log('Google Sheet 寫入送出：', gasResult);
+          // 背景寫入 Google Sheet（不阻擋主流程）
+          pingGasConnectivity()
+            .then((pingResult) => {
+              console.log('GAS ping 成功：', pingResult);
+              return postToGasForSheet(formDataObj);
+            })
+            .then((gasResult) => {
+              console.log('Google Sheet 寫入送出：', gasResult);
+            })
+            .catch((error) => {
+              console.error('Google Sheet 背景寫入失敗：', error);
+            });
+
           sessionStorage.removeItem('camp_student_id');
           sessionStorage.removeItem('camp_prefill');
           window.location.href = 'https://www.beyond-coding.org.tw/course-registration-system/done-page.html';
-        })
-        .catch((error) => {
-          console.error('Google Sheet 寫入失敗：', error);
+        },
+        error: (thrownError) => {
+          console.error(thrownError);
           gasSubmitState.isSubmitting = false;
+          let responseObj = {};
+          try {
+            responseObj = thrownError.responseText
+              ? JSON.parse(thrownError.responseText)
+              : {};
+          } catch (e) {
+            console.error('Failed to parse error response:', e);
+          }
           Swal.hideLoading();
           Swal.showValidationMessage(
-            `寫入 Google Sheet 失敗：${error && error.message ? error.message : '請稍後再試'}`,
+            `發生異常😥: ${responseObj.statusCode || ''} ${
+              thrownError.statusText || ''
+            } - ${responseObj.message || '請稍後再試'}`,
           );
-        });
+        },
+      });
     },
   });
 }

@@ -92,6 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 return raw;
             }
 
+            if (jsonKey === 'parent_phone' || jsonKey === 'emergency_phone') {
+                const digitsOnly = raw.replace(/\D/g, '');
+                // Fallback: 有些來源會把 09xxxxxxxx 變成 9 碼，這裡補回前導 0
+                if (/^\d{9}$/.test(digitsOnly)) {
+                    return `0${digitsOnly}`;
+                }
+                return raw;
+            }
+
             return raw;
         };
 
